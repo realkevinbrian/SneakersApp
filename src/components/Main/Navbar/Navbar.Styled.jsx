@@ -30,9 +30,10 @@ export const LinkItem = styled.li`
 
 //Icon
 export const Icon = styled.img`
-        width : ${({w}) => w} || 25px;
-        height : ${({h}) => h} || 25px;
+        width : ${({w}) => w || "25px"};
+        height : ${({h}) => h || "25px"};
         cursor : pointer;
+        padding : 0px 6px;
         
 `
 
@@ -68,9 +69,10 @@ export const Container = styled.div`
 //Flex box
 export const Flex = styled.div`
         display : flex;
-        align-items : center;
+        align-items : ${({align}) => align || "center" };
         flex-direction : ${({dir}) => dir || "row"};
-        align-center : center;
+        // justify-content : center;
+
 
 
 `
@@ -87,13 +89,14 @@ export const HorLine = styled.div`
 //Bell notification
 export const NotificationIcon = styled.span`
         opacity : 1;
-        width : 20px;
-        height : 20px;
+        width : 19px;
+        height : auto;
         background-color : ${({theme}) => theme.Colors.Primary.orange};
         text-align : center;
         color : ${({theme}) => theme.Colors.Neutral.White};
         border-radius : 50%;
         position : absolute;
+        font-size : 15px;
         transform: translateY(-10px) translateX(15px);
         
 `

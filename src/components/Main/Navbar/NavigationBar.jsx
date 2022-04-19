@@ -30,7 +30,7 @@ function NavigationBar() {
             {data.map((item) => (<LinkItem key={item.id}>{item.label}</LinkItem>))}
           </LinkWrapper>
           <SideBar>
-            <Icon src={IconCart} onClick = {()=>{ (!Open) ? isOpen(true) : isOpen(false)}}/>
+            <Icon w="20px" h="20px" src={IconCart} onClick = {()=>{ (!Open) ? isOpen(true) : isOpen(false)}}/>
             <NotificationIcon>3</NotificationIcon>
             <Avatar src={AvatarImage}/>
 

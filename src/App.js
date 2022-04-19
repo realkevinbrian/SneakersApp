@@ -2,6 +2,7 @@ import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 import "./App.css";
 import NavigationBar from "./components/Main/Navbar/NavigationBar";
+import Product from "./components/Main/Product/Product";
 
 const theme = {
   Layout : {
@@ -36,6 +37,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
         <NavigationBar/>
+        <Product/>
     </ThemeProvider>
   );
 }
