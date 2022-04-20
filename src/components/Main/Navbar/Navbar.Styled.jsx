@@ -30,8 +30,8 @@ export const LinkItem = styled.li`
 
 //Icon
 export const Icon = styled.img`
-        width : ${({w}) => w} || 25px;
-        height : ${({h}) => h} || 25px;
+        width : ${({w}) => w || "25px"};
+        height : ${({h}) => h || "25px"};
         cursor : pointer;
         
 `
@@ -40,7 +40,7 @@ export const Icon = styled.img`
 export const Avatar = styled.img`
         border : 3px solid ${({theme}) => theme.Colors.Neutral.White};
         width : 50px;
-        transiton : all 0.2s linear;
+        transition : all 0.2s linear;
         cursor : pointer;
 
         &:hover{
@@ -70,7 +70,7 @@ export const Flex = styled.div`
         display : flex;
         align-items : center;
         flex-direction : ${({dir}) => dir || "row"};
-        align-center : center;
+        align-items : center;
 
 
 `
