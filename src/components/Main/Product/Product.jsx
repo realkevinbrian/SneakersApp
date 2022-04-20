@@ -1,30 +1,49 @@
-import React from 'react'
-import { Container, IncrementBtn, ProductDesc, ProductShowCase, SmallBtn, PriceDesc, Grid, AddCartBtn, Wrapper } from "./Product.styled";
+import React, { useState } from 'react'
+
+import { Container, IncrementBtn, ProductDesc, ProductShowCase, SmallBtn, PriceDesc, Grid, AddCartBtn, Wrapper, Overlay } from "./Product.styled";
+
+
+import ProductWrapper from './ProductWrapper';
 import product1 from "../../../assets/images/image-product-1.jpg";
 import { Button, Flex, Icon } from '../Navbar/Navbar.Styled';
+
+//icons
 import IconCart from "../../../assets/images/icon-cart.svg"
 import addIcon from "../../../assets/images/icon-plus.svg"
 import minusIcon from "../../../assets/images/icon-minus.svg"
+import IconNext from "../../../assets/images/icon-next.svg";
+import IconPrev from "../../../assets/images/icon-previous.svg";
+import IconClose from "../../../assets/images/icon-close.svg"
+
 
 
 function Product() {
+
+  
+  //Product overlay
+  const [overlay, setOverlay] = useState(true); 
+  
+  
+  function handleOverlay () {
+    
+  }
+
   return (
     <React.Fragment>
         <Container>
           <Grid>
 
             <Wrapper>
-              <>
-                <ProductShowCase src={product1}/>
-              </>
-            
-              <Flex>
-                <ProductShowCase wdth="72px" src={product1}/>
-                <ProductShowCase wdth="72px" src={product1}/>
-                <ProductShowCase wdth="72px" src={product1}/>
-                <ProductShowCase wdth="72px" src={product1}/>
-              </Flex>
-            
+              <ProductWrapper/>
+              {
+                overlay && 
+                <Overlay>
+                  <Icon src={IconClose} onClick = { () => setOverlay(false)}/>
+                  <Icon src={IconPrev}/>
+                  <ProductWrapper/>
+                  <Icon src={IconNext}/>
+                </Overlay>
+              }
             </Wrapper>
             
             <Flex dir = "column" align="none">

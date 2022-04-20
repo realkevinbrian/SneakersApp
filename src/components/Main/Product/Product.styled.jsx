@@ -1,5 +1,9 @@
 import styled from "styled-components"
 import { Button, PrimaryBtn } from "../Navbar/Navbar.Styled"
+import IconNext from "../../../assets/images/icon-next.svg";
+import IconPrev from "../../../assets/images/icon-previous.svg";
+import IconClose from "../../../assets/images/icon-close.svg"
+
 
 export const Container = styled.div`
     padding : 0em 10px;
@@ -17,10 +21,20 @@ export const Wrapper = styled.div`
 
 export const ProductShowCase = styled.img`
     // border : 2px solid ;
-    display : block;
+    /* display : block; */
     width : ${({wdth}) => wdth || "350px"};
-    padding : 10px;
-    border-radius : 20px;
+    margin : 10px;
+    border-radius : 10px;
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    object-fit: contain;
+
+
+
+    &:hover{
+        /* border: 2px solid ${({theme}) => theme.Colors.Neutral.varkBlue}; */
+        opacity: 0.5;
+        border: 1px solid ${({theme}) => theme.Colors.Primary.orange};
+    }
 `
 
 export const ProductDesc = styled.div`
@@ -117,3 +131,77 @@ export const AddCartBtn = styled.button`
         }
         
 `
+
+export const Overlay = styled.div`
+    background-color: #000000ab;
+    border: 2px dashe green;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    transition: all 0.5s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr auto 1fr;
+
+
+    > img{
+        object-fit: cover;
+        display: block;
+    }
+
+   
+    > :nth-child(1){
+        /* border: 2px dashed red; */
+        position: absolute;
+        top: 0px;
+        transform: translateY(70px) translateX(160px);
+        align-self: center;
+        justify-self: center;
+        width: 15px;
+        height: 15px;
+        background-color: #ffffff;
+        z-index: 60;
+        padding: 10px;
+        border-radius: 50%;
+
+        
+
+    }
+
+    > :nth-child(2){
+        align-self: center;
+        justify-self: end;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        position: relative;
+        transform: translateX(30px) translateY(-20px);
+        width: 20px;
+        height: 20px;
+        background-color: #ffffff;
+        z-index: 60;
+        
+        
+    }
+
+    > :nth-child(4){
+        align-self: center;
+        justify-self: start;
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        position: relative;
+        transform: translateX(-30px) translateY(-20px);
+        width: 20px;
+        height: 20px;
+        background-color: #ffffff;
+    }
+
+`
+

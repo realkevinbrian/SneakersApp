@@ -7,20 +7,24 @@ import IconCart from "../../../assets/images/icon-cart.svg"
 
 
 
-function Cart() {
+function Cart({data}) {
   return (
     <>
+    
+      <Flex>
+          <CartImage src={data.avatar}/>
+              <CartText>
+                  <p>
+                      {data.label}
+                      <Price>1,250 MT x 3 <Price>2,250 MT</Price> </Price>
+                  </p>
+              </CartText>
+              <a href={`/product/delete/${data.id}`}>
+                <Icon src={deleteIcon}/>
+              </a>
+      </Flex> 
 
-    <Flex>
-        <CartImage src={product1}/>
-            <CartText>
-                <p>
-                    Fall Limited Edition Sneakers
-                    <Price>1,250 MT x 3 <Price>2,250 MT</Price> </Price>
-                </p>
-            </CartText>
-        <Icon src={deleteIcon} />
-    </Flex> 
+
     </>
   )
 }

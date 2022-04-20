@@ -72,9 +72,6 @@ export const Flex = styled.div`
         align-items : ${({align}) => align || "center" };
         flex-direction : ${({dir}) => dir || "row"};
         // justify-content : center;
-
-
-
 `
 
 

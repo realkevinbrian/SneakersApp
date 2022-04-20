@@ -33,11 +33,9 @@ function NavigationBar() {
             <Icon w="20px" h="20px" src={IconCart} onClick = {()=>{ (!Open) ? isOpen(true) : isOpen(false)}}/>
             <NotificationIcon>3</NotificationIcon>
             <Avatar src={AvatarImage}/>
-
-            <>
-              <CartCard status = {Open}/>
-            </>
-
+              <>
+                <CartCard status = {Open}/>
+              </>
           </SideBar>
         </Flex>
         <HorLine/>
