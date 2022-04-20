@@ -7,21 +7,30 @@ import IconClose from "../../../assets/images/icon-close.svg"
 
 export const Container = styled.div`
     padding : 0em 10px;
-    // height: 100vh;
 
-    >*{
-        font-weight : bold;
+    
+    
+    //MOBILE RULES
+    @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+        padding: 0;
+        
     }
+    
+
+
+
 `
 
 export const Wrapper = styled.div`
     padding :40px 0px;
 
+    //mobile
+    @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+        padding:0;
+    }
 `
 
 export const ProductShowCase = styled.img`
-    // border : 2px solid ;
-    /* display : block; */
     width : ${({wdth}) => wdth || "350px"};
     margin : 10px;
     border-radius : 10px;
@@ -29,12 +38,22 @@ export const ProductShowCase = styled.img`
     object-fit: contain;
 
 
-
+    //ONHOVER
     &:hover{
         /* border: 2px solid ${({theme}) => theme.Colors.Neutral.varkBlue}; */
         opacity: 0.5;
         border: 1px solid ${({theme}) => theme.Colors.Primary.orange};
     }
+
+    //MOBILE RULES
+    @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+        margin: 20px 6px;
+        flex:1;
+        border-radius: 0px;
+    }
+
+
+
 `
 
 export const ProductDesc = styled.div`
@@ -113,6 +132,13 @@ export const Grid = styled.div`
 
     > * {
         // border : 1px dashed;
+    }
+
+
+    //Define CSS Rules on Mobile
+    @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+        display: grid;
+        grid-template-columns: 1fr;
     }
 `
 
@@ -203,5 +229,12 @@ export const Overlay = styled.div`
         background-color: #ffffff;
     }
 
+
+    //MOBILE RULES => OVERLAY LAYER
+    //MOBILE RULES
+    @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+        display: none;
+    }
+    
 `
 

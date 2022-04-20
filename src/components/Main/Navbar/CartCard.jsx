@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import Cart from './Cart'
-import { FloatingWrapper,CartWrapper,CartHead,CartBody, HorLine, Button, PrimaryBtn } from './Navbar.Styled'
+import React, { useState } from 'react';
+import product1 from "../../../assets/images/image-product-1.jpg";
 import "../../../Sass/Default.css";
-import product1 from "../../../assets/images/image-product-1.jpg"
+import Cart from './Cart';
+import { CartBody, CartHead, CartWrapper, FloatingWrapper, HorLine, PrimaryBtn } from './Navbar.Styled';
 
 
 
@@ -11,7 +11,7 @@ function CartCard({status}) {
 
 
     //define data
-    const [cartData, setCartData] = useState([
+    const [cartData] = useState([
 
         {id : 1, avatar : product1,  label : "Fall Limited Edition Sneakers", price : 1250},
         {id : 2, avatar : product1, label : "Air Jordan", price : 3250}

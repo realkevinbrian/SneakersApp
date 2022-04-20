@@ -1,8 +1,6 @@
-import React from 'react'
-import product1 from "../../../assets/images/image-product-1.jpg"
-import { CartImage, CartText, Flex, Icon, Price} from './Navbar.Styled'
+import React from 'react';
 import deleteIcon from "../../../assets/images/icon-delete.svg";
-import IconCart from "../../../assets/images/icon-cart.svg"
+import { CartImage, CartText, Flex, Icon, Price } from './Navbar.Styled';
 
 
 
