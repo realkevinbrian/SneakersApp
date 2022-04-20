@@ -33,6 +33,7 @@ export const Icon = styled.img`
         width : ${({w}) => w || "25px"};
         height : ${({h}) => h || "25px"};
         cursor : pointer;
+        padding : 0px 6px;
         
 `
 
@@ -49,6 +50,13 @@ export const Avatar = styled.img`
 
         }
 
+
+        //Mobile 
+        @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+        
+                width: 45px;
+        }
+
 `
 
 //SideBar
@@ -57,22 +65,53 @@ export const SideBar = styled.div`
         flex-direction : row;
         align-items : center;
         gap : 2rem;
+        
+        
+
+        //Mobile 
+        @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+        
+                & :nth-child(1){
+                        align-self: center;
+                        justify-self: flex-end;
+                        place-self: center;
+                        
+                }
+
+                & :nth-child(3){
+                        width: 40px;
+                        object-fit: contain;
+
+                }
+        }
+
+        
 `
 
 //container
 export const Container = styled.div`
         padding : 0 6rem;
         padding-top :2rem;
+        //Mobile 
+        @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+                padding: 0;
+                margin: 0;
+        }
 `
 
 //Flex box
 export const Flex = styled.div`
         display : flex;
-        align-items : center;
+        align-items : ${({align}) => align || "center" };
         flex-direction : ${({dir}) => dir || "row"};
+<<<<<<< HEAD
         align-items : center;
 
+=======
+        // justify-content : center;
+>>>>>>> Features
 
+        
 `
 
 
@@ -82,18 +121,22 @@ export const HorLine = styled.div`
         background-color : ${({theme}) => theme.Colors.Neutral.GrayishBlue};
         color : ${({theme}) => theme.Colors.Neutral.LightGrayishBlue}; 
         margin-top : ${({mt}) => mt || "2rem"};
-`;
-
+        
+        @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+                display: none;
+        }
+`
 //Bell notification
 export const NotificationIcon = styled.span`
         opacity : 1;
-        width : 20px;
-        height : 20px;
+        width : 19px;
+        height : auto;
         background-color : ${({theme}) => theme.Colors.Primary.orange};
         text-align : center;
         color : ${({theme}) => theme.Colors.Neutral.White};
         border-radius : 50%;
         position : absolute;
+        font-size : 15px;
         transform: translateY(-10px) translateX(15px);
         
 `
@@ -103,7 +146,7 @@ export const HoverPseudo = styled.div`
         background-color : ${({theme}) => theme.Colors.Primary.orange};
         width : 100%;
         height : 3px;
-        positon : relative;
+        position : relative;
         transform: translateY(49px);
         border-radius : 5px;
 
@@ -112,19 +155,41 @@ export const HoverPseudo = styled.div`
 
 
 
-//////////////////////CART CARD////////////////
+/*..........................................*\
+ ..................CART CARD................*\
+*/
 export const FloatingWrapper = styled.div`
         position : fixed;
         transform : translateX(-140px) translateY(130px);
 
+         *{
+                border: 1px dashed;
+        }
+
+        @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform : translateX(40px) translateY(80px);
+
+
+        }
 `
 
 export const CartWrapper = styled.div`
+        border: 2px dashed red;
+        
         width : 300px;
         height : auto;
         background-color : white;
         border-radius : 10px;
         box-shadow : 0px 0px 10px 1px ${({theme}) => theme.Colors.Neutral.GrayishBlue};
+
+        @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+        box-shadow : 0 0;
+
+
+        }
         
 
 
@@ -138,8 +203,13 @@ export const CartHead = styled.div`
 
 export const CartBody = styled.div`
         padding:0 20px;
-        display : flex;
         flex-direction : column;
+        flex: 1;
+        
+
+        border: 2px solid red;
+
+
 
 `
 
@@ -195,5 +265,33 @@ export const PrimaryBtn = styled(Button)`
         color : ${({theme}) => theme.Colors.Neutral.GrayishBlue};
 
 
+        }
+`
+
+export const MenuIcon = styled.img`        
+`
+
+export const NavWrapper = styled.nav`
+        display : flex;
+        align-items : ${({align}) => align || "center" };
+        flex-direction : ${({dir}) => dir || "row"};
+        
+        //Mobile 
+        @media screen and ( max-width : ${({theme}) => theme.Layout.Mobile} ) {
+
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                position: fixed;
+                width: 100%;
+                max-width: 99vw;
+                min-width: 99vw;
+                background-color: white;
+                z-index: 1000;
+                padding: 10px 0px;
+
+                ul{
+                        display: none;
+                }
         }
 `
