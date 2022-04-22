@@ -1,42 +1,49 @@
-import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import "./App.css";
-import NavigationBar from "./components/Main/Navbar/NavigationBar";
-
-const theme = {
-  Layout : {
-    Mobile : "375px",
-    Desktop : "1440px"
-  },
-
-  Colors : {
-
-    Primary : {
-      orange : "hsl(26, 100%, 55%)",
-      paleOrange: "hsl(25, 100%, 94%)"
-    },
-    Neutral : {
-      varkBlue : "hsl(220, 13%, 13%)",
-      DarkGrayishBlue: "hsl(219, 9%, 45%)",
-      GrayishBlue: "hsl(220, 14%, 75%)",
-      LightGrayishBlue: "hsl(223, 64%, 98%)",
-      White : "hsl(0, 0%, 100%)",
-      Black : "hsl(0, 0%, 0%)"
-    }
-  },
-  Typography : {
-    fontSize : "16px",
-    fontFamily : "(https://fonts.google.com/specimen/Kumbh+Sans)",
-    fontBold : "400",
-    fontBolder : "700"
-  }
-}
+import React, { useEffect, useState } from "react";
+import NavigationBar from "./components/NavigationBar"
+import Product from "./components/ProductShowCase";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./components/GlobalStyle";
+import Attribution from "./components/Attribution";
 
 function App() {
+
+  const theme = {
+
+    Layout : {
+      Mobile : "375px",
+      Desktop : "1440px"
+    },
+
+    Colors : {
+
+      Primary : {
+
+        orange : "hsl(26, 100%, 55%)",
+        pale_orange : "hsl(25, 100%, 94%)"
+      },
+
+      Neutral : {
+
+        vark_blue : "hsl(220, 13%, 13%)",
+        dark_blue : "hsl(219, 9%, 45%)",
+        gray_blue : "hsl(220, 14%, 75%)",
+        light_blue : "hsl(223, 64%, 98%)",
+        white : "hsl(0, 0%, 100%)",
+        black : "hsl(0, 0%, 0%)"
+
+      }
+    }
+  }
+
   return (
+    <>
     <ThemeProvider theme={theme}>
-        <NavigationBar/>
+      <GlobalStyles/>
+      <NavigationBar/>
+      <Product/>
+      <Attribution/>
     </ThemeProvider>
+    </>
   );
 }
 
