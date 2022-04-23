@@ -88,6 +88,7 @@ export const ListWrapper = styled.ul`
         }
 
         img{
+            display: block;
             width: 15px;
             padding-bottom: 20px;
         }
