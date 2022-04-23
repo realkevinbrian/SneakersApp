@@ -58,6 +58,11 @@ export const ListWrapper = styled.ul`
     gap: 20px;
     justify-self: end;
     flex: 1;
+    
+    //CLose button => Remove on desktop viewers
+    img{
+        display: none;
+    }
 
     @media screen and (max-width : ${({theme})=>theme.Layout.Mobile}){
         /* border: 1px solid red; =>DEBUG */
@@ -101,7 +106,9 @@ export const ListItem = styled.li`
 
 
 //=>Side Bar
-export const Icon = styled.img``;
+export const Icon = styled.img`
+
+`;
 
 export const MenuIcon = styled.img`
     display: none;
