@@ -13,6 +13,7 @@ export const Container = styled.section`
     @media screen and (max-width : ${({theme})=>theme.Layout.Mobile}){
         /* * {border: 1px dashed red;} ==> DEBUG CSS*/
         grid-template-columns: 1fr;
+        padding-top: 50px;
     }
 `;
 
@@ -286,11 +287,17 @@ export const ProductContentText = styled.div`
             color: ${({theme}) => theme.Colors.Primary.orange};
         }
         
-        
 
         img{
             width: 15px;
         }
+
+    @media screen and (max-width : ${({theme})=>theme.Layout.Mobile}){
+        margin-bottom: 20px;
+        text-align: center;
+        display: block;
+    
+    }
     `;
     
     

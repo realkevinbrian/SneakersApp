@@ -27,6 +27,9 @@ export const NavWrapper = styled.nav`
         justify-content: space-around;
         background-color: ${({theme}) => theme.Colors.Neutral.white};
         border: 1px solid transparent;
+        position: fixed;
+        width: 100%;
+        z-index: 10;
     }
 
 
