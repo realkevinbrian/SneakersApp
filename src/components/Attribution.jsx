@@ -5,6 +5,7 @@ import styled from 'styled-components'
 const StyledAttribution = styled.div`
       text-align: center;
       padding-top: 25px;
+      display: none;
 
 `
 function Attribution() {

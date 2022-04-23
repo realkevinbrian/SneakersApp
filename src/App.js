@@ -10,7 +10,8 @@ function App() {
   const theme = {
 
     Layout : {
-      Mobile : "375px",
+      Mobile : "699px",
+      Tablet : "700px",
       Desktop : "1440px"
     },
 

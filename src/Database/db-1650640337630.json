@@ -1,0 +1,11 @@
+{
+  "post": [
+    {
+      "id": 5,
+      "name": "Fall Limited Edition Sneakers",
+      "price": 250,
+      "discount": 50,
+      "currency": "$"
+    }
+  ]
+}
