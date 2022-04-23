@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 //containers
 export const CartWrapper = styled.div`
-    display: ${({state}) => (state) ? "block" : "none" };
+    display: ${({state,cartStatus}) => (state || cartStatus) ? "block" : "none" };
     position: absolute;
     top: 0;
     right: 0;

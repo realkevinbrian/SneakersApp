@@ -36,12 +36,24 @@ function App() {
     }
   }
 
+
+  /***
+   * Initialize a state open the cart 
+   * When user clicks on the cartIcon in the Navigation bar 
+   */
+  const [openCart, isCartOpen] = useState(false);
+
+  function handleOpenCart(){
+    isCartOpen(true);
+    console.log("Opened Cart")
+  }
+
   return (
     <>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <NavigationBar/>
-      <Product/>
+      <NavigationBar cartState = {handleOpenCart}/>
+      <Product cartStatus={openCart}/>
       <Attribution/>
     </ThemeProvider>
     </>

@@ -1,20 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
-import * as S from "./styled";
+import React, { useState } from 'react';
+import NextIcon from "../../assets/images/icon-next.svg";
+import PrevIcon from "../../assets/images/icon-previous.svg";
 import Product1 from "../../assets/images/image-product-1.jpg";
 import Product2 from "../../assets/images/image-product-2.jpg";
 import Product3 from "../../assets/images/image-product-3.jpg";
 import Product4 from "../../assets/images/image-product-4.jpg";
-import { Icon } from '../NavigationBar/styled';
-import cartIcon from "../../assets/images/icon-cart.svg"
-// import { render } from '@testing-library/react';
-import { CartCount } from './ProductIncrement';
-import CartBox from "../CartBox/index";
 import useFetch from '../../Hooks/useFetch';
-import PrevIcon  from "../../assets/images/icon-previous.svg";
-import NextIcon from "../../assets/images/icon-next.svg"
+import CartBox from "../CartBox/index";
+import { CartCount } from './ProductIncrement';
+import * as S from "./styled";
 
 
-function Index() {
+function Index({cartStatus}) {
 
     //Fetched data
     const data = useFetch()
@@ -27,11 +24,14 @@ function Index() {
     //=>Data state 
     const [addCart,setCartData] = useState(null);
 
+    /***
+     * IN THIS FUNCTION WE RECEIVE DATA FROM  CHILD COMPONENT
+     * AND USE IN THIS COMPONT
+     */
     function CurrentAmount(amount){
         setValue(amount);
         setCartState(true);
-        setCartData(data)
-        
+        setCartData(data);
     }
 
     /***
@@ -43,18 +43,19 @@ function Index() {
     const [previewImage, setPreviewImage] = useState(images[slide]); 
 
     /***
-     * functions
+     * INIT METHOD TO SLIDE THROUGH IMAGES ON MOBILE DEVICES
+     * 
      */
     function nextImage () {
-        if(slide < images.length){
+        if(slide < images.length - 1){
             setSlider(slide + 1)
             setPreviewImage(images[slide]);
-            console.log("NexSlide",slide)
+            // console.log("NexSlide",slide) =>DEBUG
 
         }else{
             setSlider(0)
             setPreviewImage(images[slide]);
-            console.log("NexSlide => else",slide, "Preview =>", previewImage)
+            // console.log("NexSlide => else",slide, "Preview =>", previewImage) => DEBUG
         }
     }
 
@@ -70,24 +71,20 @@ function Index() {
     }
 
 
+
   return (
     <>
-        <CartBox increment={value} status={cartState} data={addCart}/>
+        <CartBox increment={value} status={cartState} isCartOpen={cartStatus} data={addCart}/>
         <S.Container>
-
             <S.ProductWrapper>
-
                 <S.ProductShowCase>
-                    
                     <S.ProductPreview>
                         <S.PreviewImage src={previewImage}/>
                         <S.SlideBtnsWrapper>
                             <S.PrevBtn src={PrevIcon} onClick ={prevImage}/>
                             <S.NextBtn src={NextIcon} onClick={nextImage}/>
                         </S.SlideBtnsWrapper>
-                        
                     </S.ProductPreview>
-
                     <S.ShowCaseWrapper>
                         {
                             images.map((image)=>(
@@ -95,14 +92,10 @@ function Index() {
                             ))
                         }
                     </S.ShowCaseWrapper>
-
                 </S.ProductShowCase>
-
             </S.ProductWrapper>
-
             <S.ProductWrapper>
                 <S.ProductContentWrapper>
-                    
                     {
                         data.map((item)=>{
 
@@ -112,47 +105,38 @@ function Index() {
                              */
                             let total = `${item.currency} ${((item.price * item.discount) / 100)}`;
 
-                            /**
-                             * Calculate Discount
-                             */
-                            let discount = `${item.currency} ${(item.price * item.discount) / 100}`;
                             
                             /**
                              * Body text
                              */
-                            
-
 
                             return(
                             
-                            <>
+                                <>
+                                    <S.ProductContentText key={item.title}>
+                                        <S.H2>Sneaker Company</S.H2>
+                                        <S.H1>{item.title}</S.H1>
+                                        <S.Paragraph>
+                                            {item.body}
+                                        </S.Paragraph>
+                                    </S.ProductContentText>
 
-                                <S.ProductContentText>
-                                    <S.H2>Sneaker Company</S.H2>
-                                    <S.H1>{item.title}</S.H1>
-                                    <S.Paragraph>
-                                        {item.body}
-                                    </S.Paragraph>
-                                </S.ProductContentText>
-
-                                <S.PriceWrapper>
-                                    <S.MainPrice>{total}</S.MainPrice>
-                                    <S.DiscountPercentage>{item.discount}%</S.DiscountPercentage>
-                                    <S.DiscountPrice>{`${item.currency} ${item.price}`}</S.DiscountPrice>
-                                </S.PriceWrapper>
-                        
-                            </>
+                                    <S.PriceWrapper>
+                                        <S.MainPrice>{total}</S.MainPrice>
+                                        <S.DiscountPercentage>{item.discount}%</S.DiscountPercentage>
+                                        <S.DiscountPrice>{`${item.currency} ${item.price}`}</S.DiscountPrice>
+                                    </S.PriceWrapper>
+                            
+                                </>
                         )
                         })
                     }
-
                     <S.AddCartWrapper>
                         <CartCount getAmount={CurrentAmount}/>
                     </S.AddCartWrapper>
 
                 </S.ProductContentWrapper>
             </S.ProductWrapper>
-
         </S.Container>
     </>
   )

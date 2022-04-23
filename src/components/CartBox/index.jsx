@@ -7,14 +7,14 @@ import deleteIcon from "../../assets/images/icon-delete.svg"
 import CartItem from './CartItem';
 
 
-function CartBox ({data,status,increment}){
+function CartBox ({data,status,increment,isCartOpen}){
 
     //=>Data prop is for displaying data
     //=>Status is for state
     
     
     return(
-        <S.CartWrapper state={status}>
+        <S.CartWrapper state={status} cartStatus = {isCartOpen}>
             <S.CartHeader>
                 <h1>Cart</h1>
             </S.CartHeader>
@@ -25,8 +25,7 @@ function CartBox ({data,status,increment}){
                     :<S.CartData>
                         <CartItem data={data} increVal = {increment}/>
                         <BuyBtn>Check out</BuyBtn>
-                    </S.CartData>
-                    
+                    </S.CartData>   
                 }
             </S.CartBody>
         </S.CartWrapper>

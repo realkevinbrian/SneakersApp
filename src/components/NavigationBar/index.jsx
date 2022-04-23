@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import cartIcon from "../../assets/images/icon-cart.svg";
+import IconClose from "../../assets/images/icon-close.svg";
+import BarIcon from "../../assets/images/icon-menu.svg";
+import Avatar from "../../assets/images/image-avatar.png";
+import Logo from "../../assets/images/logo.svg";
 import * as S from "./styled";
 
-import Logo from "../../assets/images/logo.svg";
-import cartIcon from "../../assets/images/icon-cart.svg";
-import Avatar from "../../assets/images/image-avatar.png";
-import CartBox from "../CartBox";
-import BarIcon from "../../assets/images/icon-menu.svg";
-import IconClose from "../../assets/images/icon-close.svg";
-function Index() {
+
+
+function Index({cartState}) {
 
   const Links = [
     {id : 1, title : "Collections", Goto : "/collections"},
@@ -17,16 +18,22 @@ function Index() {
     {id : 5, title : "Contact", Goto : "/Contact"},
   ]
 
+  /***
+   * HOLD CLICK STATE TO OPEN MENU
+   */
+  const [menuState, setMenuState] = useState(false);
 
 
   /***
-   * HOLD CLICK STATE
+   * debug cart
    */
-  const [menuState, setMenuState] = useState(false);
+  // cartState();
+  
 
   return (
     <>
         <S.NavWrapper>
+            
             <S.MenuIcon src={BarIcon} onClick={()=> setMenuState(true)}/>
             <S.LogoWrapper>
               <S.Logo src={Logo}/>
@@ -44,10 +51,11 @@ function Index() {
             </S.ListWrapper>
 
             <S.NotificationBar>
-                <S.Icon src={cartIcon}/>
+                <S.Icon src={cartIcon} onClick={cartState}/>
                 <S.NotIcon>3</S.NotIcon>
-                <S.Avatar src={Avatar}/>
+                <S.Avatar src={Avatar} onClick={cartState}/>
             </S.NotificationBar>
+            
         </S.NavWrapper>
 
 
