@@ -42,10 +42,8 @@ function App() {
    * When user clicks on the cartIcon in the Navigation bar 
    */
   const [openCart, isCartOpen] = useState(false);
-
   function handleOpenCart(){
-    isCartOpen(true);
-    console.log("Opened Cart")
+    (openCart) ? isCartOpen(false) : isCartOpen(true);
   }
 
   return (

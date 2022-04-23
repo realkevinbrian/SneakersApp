@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from "./styled";
 import {H1, H2, P, BuyBtn, ShowCaseImage, Paragraph, MainPrice, DiscountPrice} from "../../components/ProductShowCase/styled"
 import Product1 from "../../assets/images/image-product-1.jpg";
@@ -11,7 +11,7 @@ function CartBox ({data,status,increment,isCartOpen}){
 
     //=>Data prop is for displaying data
     //=>Status is for state
-    
+    // const [cartState, setCartState] = useState(false);
     
     return(
         <S.CartWrapper state={status} cartStatus = {isCartOpen}>
