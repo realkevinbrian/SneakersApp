@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import cartIcon from "../../assets/images/icon-cart.svg";
+import IconClose from "../../assets/images/icon-close.svg";
+import BarIcon from "../../assets/images/icon-menu.svg";
+import Avatar from "../../assets/images/image-avatar.png";
+import Logo from "../../assets/images/logo.svg";
 import * as S from "./styled";
 
-import Logo from "../../assets/images/logo.svg";
-import cartIcon from "../../assets/images/icon-cart.svg";
-import Avatar from "../../assets/images/image-avatar.png";
 
 
-function index() {
+function Index({cartState}) {
 
   const Links = [
     {id : 1, title : "Collections", Goto : "/collections"},
@@ -16,27 +18,50 @@ function index() {
     {id : 5, title : "Contact", Goto : "/Contact"},
   ]
 
+  /***
+   * HOLD CLICK STATE TO OPEN MENU
+   */
+  const [menuState, setMenuState] = useState(false);
+
+
+  /***
+   * debug cart
+   */
+  // cartState();
+  
+
   return (
     <>
         <S.NavWrapper>
-            <a><S.Logo src={Logo}/></a>
-            <S.ListWrapper>
+            
+            <S.MenuIcon src={BarIcon} onClick={()=> setMenuState(true)}/>
+            <S.LogoWrapper>
+              <S.Logo src={Logo}/>
+            </S.LogoWrapper>
+
+            <S.ListWrapper state={menuState}>
+              <S.Icon src={IconClose} onClick={()=> setMenuState(false)}/>
               {
                 Links.map(item =>(
-                  <S.ListItem key={item.id}>
+                  <S.ListItem key={item.id} onClick={()=> setMenuState(false)}>
                     <a href={item.Goto}>{item.title}</a>
                   </S.ListItem>
                 ))
               }
             </S.ListWrapper>
+
             <S.NotificationBar>
-                <S.Icon src={cartIcon}/>
-                <S.Avatar src={Avatar}/>
+                <S.Icon src={cartIcon} onClick={cartState}/>
+                <S.NotIcon>3</S.NotIcon>
+                <S.Avatar src={Avatar} onClick={cartState}/>
             </S.NotificationBar>
+            
         </S.NavWrapper>
+
+
        
     </>
   )
 }
 
-export default index
+export default Index

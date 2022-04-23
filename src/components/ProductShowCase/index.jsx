@@ -1,70 +1,147 @@
-import React from 'react';
-import * as S from "./styled";
+import React, { useState } from 'react';
+import NextIcon from "../../assets/images/icon-next.svg";
+import PrevIcon from "../../assets/images/icon-previous.svg";
 import Product1 from "../../assets/images/image-product-1.jpg";
 import Product2 from "../../assets/images/image-product-2.jpg";
 import Product3 from "../../assets/images/image-product-3.jpg";
 import Product4 from "../../assets/images/image-product-4.jpg";
+import useFetch from '../../Hooks/useFetch';
+import CartBox from "../CartBox/index";
+import { CartCount } from './ProductIncrement';
+import * as S from "./styled";
 
-import AddIcon from "../../assets/images/icon-plus.svg";
-import MinuIcon from "../../assets/images/icon-minus.svg";
-import { Icon } from '../NavigationBar/styled';
-import cartIcon from "../../assets/images/icon-cart.svg"
 
-function index() {
+function Index({cartStatus}) {
+
+    //Fetched data
+    const data = useFetch()
+
+
+    //=>price
+    const [value, setValue] = useState(0);
+    //=>Open Cart
+    const [cartState, setCartState] = useState(false);
+    //=>Data state 
+    const [addCart,setCartData] = useState(null);
+
+    /***
+     * IN THIS FUNCTION WE RECEIVE DATA FROM  CHILD COMPONENT
+     * AND USE IN THIS COMPONT
+     */
+    function CurrentAmount(amount){
+        setValue(amount);
+        setCartState(true);
+        setCartData(data);
+    }
+
+    /***
+     * Init a state to Preview Image
+     */
+
+    const images = [Product1,Product2,Product3,Product4];
+    const [slide,setSlider] = useState(0);
+    const [previewImage, setPreviewImage] = useState(images[slide]); 
+
+    /***
+     * INIT METHOD TO SLIDE THROUGH IMAGES ON MOBILE DEVICES
+     * 
+     */
+    function nextImage () {
+        if(slide < images.length - 1){
+            setSlider(slide + 1)
+            setPreviewImage(images[slide]);
+            // console.log("NexSlide",slide) =>DEBUG
+
+        }else{
+            setSlider(0)
+            setPreviewImage(images[slide]);
+            // console.log("NexSlide => else",slide, "Preview =>", previewImage) => DEBUG
+        }
+    }
+
+    function prevImage () {
+        if(slide > 0){
+            setSlider(slide - 1)
+            setPreviewImage(images[slide]);
+        }else{
+            setSlider(slide);
+            setPreviewImage(images[slide]);
+
+        }
+    }
+
+
+
   return (
     <>
+        <CartBox increment={value} status={cartState} isCartOpen={cartStatus} data={addCart}/>
         <S.Container>
-
             <S.ProductWrapper>
-
                 <S.ProductShowCase>
                     <S.ProductPreview>
-                        <S.PreviewImage src={Product1}/>
+                        <S.PreviewImage src={previewImage}/>
+                        <S.SlideBtnsWrapper>
+                            <S.PrevBtn src={PrevIcon} onClick ={prevImage}/>
+                            <S.NextBtn src={NextIcon} onClick={nextImage}/>
+                        </S.SlideBtnsWrapper>
                     </S.ProductPreview>
                     <S.ShowCaseWrapper>
-                        <S.ShowCaseImage src={Product1}/>
-                        <S.ShowCaseImage src={Product2}/>
-                        <S.ShowCaseImage src={Product3}/>
-                        <S.ShowCaseImage src={Product4}/>
+                        {
+                            images.map((image)=>(
+                                <S.ShowCaseImage key={image} src={image} onClick={(self)=>setPreviewImage(self.target.src)}/>
+                            ))
+                        }
                     </S.ShowCaseWrapper>
                 </S.ProductShowCase>
-
             </S.ProductWrapper>
-
             <S.ProductWrapper>
                 <S.ProductContentWrapper>
-                    
-                    <S.ProductContentText>
-                        <S.H2>Sneaker Company</S.H2>
-                        <S.H1>Fall Limited Edition <br/>Sneakers</S.H1>
-                        <S.Paragraph>
-                        These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.
-                        </S.Paragraph>
-                    </S.ProductContentText>
+                    {
+                        data.map((item)=>{
 
-                    <S.PriceWrapper>
-                        <S.MainPrice>$125.00</S.MainPrice>
-                        <S.DiscountPercentage>50%</S.DiscountPercentage>
-                        <S.DiscountPrice>$250.00</S.DiscountPrice>
-                    </S.PriceWrapper>
+                            /**
+                             * We gonna we checking for Increased Val
+                             * if the increVal is greater than return increase else 1
+                             */
+                            let total = `${item.currency} ${((item.price * item.discount) / 100)}`;
 
+                            
+                            /**
+                             * Body text
+                             */
+
+                            return(
+                            
+                                <>
+                                    <S.ProductContentText key={item.title}>
+                                        <S.H2>Sneaker Company</S.H2>
+                                        <S.H1>{item.title}</S.H1>
+                                        <S.Paragraph>
+                                            {item.body}
+                                        </S.Paragraph>
+                                    </S.ProductContentText>
+
+                                    <S.PriceWrapper>
+                                        <S.MainPrice>{total}</S.MainPrice>
+                                        <S.DiscountPercentage>{item.discount}%</S.DiscountPercentage>
+                                        <S.DiscountPrice>{`${item.currency} ${item.price}`}</S.DiscountPrice>
+                                    </S.PriceWrapper>
+                            
+                                </>
+                        )
+                        })
+                    }
                     <S.AddCartWrapper>
-
-                        <S.ProductPriceIncrement>
-                            <S.MinusBtn src={MinuIcon}/>
-                            <span>{0}</span>
-                            <S.AddBtn src={AddIcon}/>
-                        </S.ProductPriceIncrement>
-
-                        <S.BuyBtn><Icon src={cartIcon}/>Add to cart</S.BuyBtn>
-
+                        <CartCount getAmount={CurrentAmount}/>
                     </S.AddCartWrapper>
+
                 </S.ProductContentWrapper>
             </S.ProductWrapper>
-
         </S.Container>
     </>
   )
 }
 
-export default index
+export default Index
+
+

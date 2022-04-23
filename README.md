@@ -1,49 +1,73 @@
-  Collections
-  Men
-  Women
-  About
-  Contact
+# Frontend Mentor - E-commerce product page solution
 
-  Sneaker Company
+## Table of contents
 
-  Fall Limited Edition Sneakers
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [The challenge](#screenshots)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+- [Author](#author)
 
-  These low-profile sneakers are your perfect casual wear companion. Featuring a 
-  durable rubber outer sole, they’ll withstand everything the weather can offer.
+## Overview
 
-  $125.00
-  50%
-  $250.00
+## Screenshots
 
-  0
-  Add to cart
+-[desktop](ScreenShots/screenshot1.png) 
+-[mobile view](ScreenShots/screenshot2.png)
+-[mobile view2](ScreenShots/screenshot3.png)
+-[mobile cart](ScreenShots/screenshot4.png)
 
-  const theme = {
-  Layout : {
-    Mobile : "375px",
-    Desktop : "1440px"
-  },
+### The challenge
 
-  Colors : {
+Users should be able to:
 
-    Primary : {
-      orange : "hsl(26, 100%, 55%)",
-      paleOrange: "hsl(25, 100%, 94%)"
-    },
-    Neutral : {
-      varkBlue : "hsl(220, 13%, 13%)",
-      DarkGrayishBlue: "hsl(219, 9%, 45%)",
-      GrayishBlue: "hsl(220, 14%, 75%)",
-      LightGrayishBlue: "hsl(223, 64%, 98%)",
-      White : "hsl(0, 0%, 100%)",
-      Black : "hsl(0, 0%, 0%)"
-    }
-  },
-  Typography : {
-    fontSize : "16px",
-    fontFamily : "(https://fonts.google.com/specimen/Kumbh+Sans)",
-    fontBold : "400",
-    fontBolder : "700"
-  }
-}
+- View the optimal layout for the site depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Open a lightbox gallery by clicking on the large product image
+- Switch the large product image by clicking on the small thumbnail images
+- Add items to the cart
+- View the cart and remove items from it
+
+### Links
+
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [React](https://reactjs.org/) - JS library
+- [Styled Components](https://styled-components.com/) - For styles
+
+**Note: These are just examples. Delete this note and replace the list above with your own choices**
+
+### What I learned
+
+Bulding this Project I learned new Development Technics to solve problems in real world Projects,
+I figured out that we have to first code the HTML first then style once we finished structuring all the project.
+
+-[] My challenge was to create a cart box when once Add to Cart the cart open and add the Product to cart bucket.
+-[] Creating Navbar was also challenging but in this project I figured out how to solve such a problem.
+
+
+### Continued development
+
+I would like to add a page to list all products and create Product functionality
+-[]Add payments like paypal , wepay etc
+
+## Author
+
+- Website - [Kevin Brian](https://realkevinbrian.netlify.app)
+- Frontend Mentor - [@realkevinbrian](https://www.frontendmentor.io/profile/realkevinbrian)
+- Twitter - [@realkevinbrian](https://www.twitter.com/realkevinbrian)
 

@@ -10,7 +10,8 @@ function App() {
   const theme = {
 
     Layout : {
-      Mobile : "375px",
+      Mobile : "699px",
+      Tablet : "700px",
       Desktop : "1440px"
     },
 
@@ -35,13 +36,26 @@ function App() {
     }
   }
 
+
+  /***
+   * Initialize a state open the cart 
+   * When user clicks on the cartIcon in the Navigation bar 
+   */
+  const [openCart, isCartOpen] = useState(false);
+  function handleOpenCart(){
+    (openCart) ? isCartOpen(false) : isCartOpen(true);
+  }
+
   return (
     <>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <NavigationBar/>
-      <Product/>
-      <Attribution/>
+      {/* <NavigationBar cartState = {handleOpenCart}/>
+      <Product cartStatus={openCart}/>
+      <Attribution/> */}
+
+
+      
     </ThemeProvider>
     </>
   );

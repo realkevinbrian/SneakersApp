@@ -1,19 +1,13 @@
-{
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+
+  {
+  
+    "post" : [{
+      "id" : 5, 
+      "title" : "Fall Limited Edition Sneakers",
+      "body" : "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+      "images" : ["product1", "product2", "product3", "product4"],
+      "price" : 250,
+      "discount" : 50,
+      "currency" : "$"
+    }]
 }
