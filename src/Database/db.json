@@ -1,13 +1,41 @@
 
   {
   
-    "post" : [{
-      "id" : 5, 
+    "post" : [
+      
+      {
+      "id" : 1, 
       "title" : "Fall Limited Edition Sneakers",
       "body" : "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
       "images" : ["product1", "product2", "product3", "product4"],
-      "price" : 250,
+      "price" : 550,
       "discount" : 50,
       "currency" : "$"
-    }]
+    },{
+      "id" : 2, 
+      "title" : "Fall Limited Edition Sneakers",
+      "body" : "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+      "images" : ["product1", "product2", "product3", "product4"],
+      "price" : 750,
+      "discount" : 50,
+      "currency" : "$"
+    },{
+      "id" : 3, 
+      "title" : "Fall Limited Edition Sneakers",
+      "body" : "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+      "images" : ["product1", "product2", "product3", "product4"],
+      "price" : 850,
+      "discount" : 50,
+      "currency" : "$"
+    },{
+      "id" : 4, 
+      "title" : "Fall Limited Edition Sneakers",
+      "body" : "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+      "images" : ["product1", "product2", "product3", "product4"],
+      "price" : 350,
+      "discount" : 50,
+      "currency" : "$"
+    }
+  
+  ]
 }

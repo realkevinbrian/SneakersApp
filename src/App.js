@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NavigationBar from "./components/NavigationBar"
 import Product from "./components/ProductShowCase";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./components/GlobalStyle";
-import Attribution from "./components/Attribution";
 
 function App() {
 
@@ -41,17 +40,14 @@ function App() {
    * Initialize a state open the cart 
    * When user clicks on the cartIcon in the Navigation bar 
    */
-  const [openCart, isCartOpen] = useState(false);
-  function handleOpenCart(){
-    (openCart) ? isCartOpen(false) : isCartOpen(true);
-  }
+ 
 
   return (
     <>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      <NavigationBar cartState = {handleOpenCart}/>
-      <Product cartStatus={openCart}/>
+      <NavigationBar/>
+      <Product/>
       {/* <Attribution/> */}
     </ThemeProvider>
     </>

@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import NextIcon from "../../assets/images/icon-next.svg";
 import PrevIcon from "../../assets/images/icon-previous.svg";
 import Product1 from "../../assets/images/image-product-1.jpg";
 import Product2 from "../../assets/images/image-product-2.jpg";
 import Product3 from "../../assets/images/image-product-3.jpg";
 import Product4 from "../../assets/images/image-product-4.jpg";
-import useFetch from '../../Hooks/useFetch';
+import { selectAll } from '../../features/postSlice';
 import CartBox from "../CartBox/index";
 import { CartCount } from './ProductIncrement';
 import * as S from "./styled";
 
 
-function Index({cartStatus}) {
+function Index() {
+    
+    //=>Open Cart
+    const [addCartId] = useState(2);
 
     //Fetched data
-    const data = useFetch()
-
+    const postsData = useSelector(selectAll).filter(item=>item.id === addCartId);
 
     //=>price
     const [value, setValue] = useState(0);
-    //=>Open Cart
-    const [cartState, setCartState] = useState(false);
-    //=>Data state 
-    const [addCart,setCartData] = useState(null);
+    
+    
 
     /***
      * IN THIS FUNCTION WE RECEIVE DATA FROM  CHILD COMPONENT
@@ -30,8 +31,7 @@ function Index({cartStatus}) {
      */
     function CurrentAmount(amount){
         setValue(amount);
-        setCartState(true);
-        setCartData(data);
+        // setCartData(postsData);
     }
 
     /***
@@ -72,7 +72,7 @@ function Index({cartStatus}) {
 
   return (
     <>
-        <CartBox increment={value} status={cartState} isCartOpen={cartStatus} data={addCart}/>
+        <CartBox increment={value}/>
         <S.Container>
             <S.ProductWrapper>
                 <S.ProductShowCase>
@@ -95,7 +95,8 @@ function Index({cartStatus}) {
             <S.ProductWrapper>
                 <S.ProductContentWrapper>
                     {
-                        data.map((item)=>{
+                        postsData
+                        .map((item)=>{
 
                             /**
                              * We gonna we checking for Increased Val
@@ -103,14 +104,10 @@ function Index({cartStatus}) {
                              */
                             let total = `${item.currency} ${((item.price * item.discount) / 100)}`;
                             
-                            /**
-                             * Body text
-                             */
-
                             return(
                             
                                 <>
-                                    <S.ProductContentText key={item.title}>
+                                    <S.ProductContentText key={item.id}>
                                         <S.H2>Sneaker Company</S.H2>
                                         <S.H1>{item.title}</S.H1>
                                         <S.Paragraph>
@@ -129,7 +126,7 @@ function Index({cartStatus}) {
                         })
                     }
                     <S.AddCartWrapper>
-                        <CartCount getAmount={CurrentAmount}/>
+                        <CartCount getAmount={CurrentAmount} addCartId={addCartId} data={postsData}/>
                     </S.AddCartWrapper>
 
                 </S.ProductContentWrapper>
