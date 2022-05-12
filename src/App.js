@@ -50,12 +50,9 @@ function App() {
     <>
     <ThemeProvider theme={theme}>
       <GlobalStyles/>
-      {/* <NavigationBar cartState = {handleOpenCart}/>
+      <NavigationBar cartState = {handleOpenCart}/>
       <Product cartStatus={openCart}/>
-      <Attribution/> */}
-
-
-      
+      {/* <Attribution/> */}
     </ThemeProvider>
     </>
   );
