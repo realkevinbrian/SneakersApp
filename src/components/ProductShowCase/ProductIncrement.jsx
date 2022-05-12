@@ -1,18 +1,21 @@
-import AddIcon from "../../assets/images/icon-plus.svg";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import cartIcon from "../../assets/images/icon-cart.svg";
 import MinuIcon from "../../assets/images/icon-minus.svg";
+import AddIcon from "../../assets/images/icon-plus.svg";
 import { Icon } from "../NavigationBar/styled";
-import React, { useRef, useState } from 'react';
 import * as S from "./styled";
-import cartIcon from "../../assets/images/icon-cart.svg"
+import { addCart } from '../../features/postSlice';
 
 
 /***
  * CartCount Component
  * Increment the numbers of product
  */
- export const CartCount = ({getAmount}) => {
+ export const CartCount = ({data}) => {
 
-    const [Amount, setAmount] = useState(0);
+    const [Amount, setAmount] = useState(1);
+    const dispatch = useDispatch();
 
     //=> function to increment
     function IncrementAmount (){
@@ -26,6 +29,18 @@ import cartIcon from "../../assets/images/icon-cart.svg"
         (Amount === 0) ? setAmount(Amount)
         : setAmount(Amount - 1)
     }
+
+    // console.log("Updated Object : =>", )
+
+    /***
+     * handle Cart
+     */
+    function handleAddCart (){
+        //here we merge our server data with selected 
+        //amount to be able to catch in our store
+        dispatch(addCart(Object.assign({Count : Amount },...data)))
+    }
+
     return(
         <>
             <S.ProductPriceIncrement>
@@ -33,7 +48,7 @@ import cartIcon from "../../assets/images/icon-cart.svg"
                 <span>{Amount}</span>
                 <S.AddBtn src={AddIcon} onClick={IncrementAmount}/>
             </S.ProductPriceIncrement>
-            <S.BuyBtn onClick={()=>getAmount(Amount)}>
+            <S.BuyBtn onClick={handleAddCart}>
                 <Icon src={cartIcon}/>Add to cart
             </S.BuyBtn>
         </>

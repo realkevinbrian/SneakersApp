@@ -1,31 +1,28 @@
-import React, { useState } from 'react'
-import * as S from "./styled";
-import {H1, H2, P, BuyBtn, ShowCaseImage, Paragraph, MainPrice, DiscountPrice} from "../../components/ProductShowCase/styled"
-import Product1 from "../../assets/images/image-product-1.jpg";
-import { Icon } from '../NavigationBar/styled';
-import deleteIcon from "../../assets/images/icon-delete.svg"
+import React from 'react';
+import { BuyBtn, H1 } from "../../components/ProductShowCase/styled";
 import CartItem from './CartItem';
+import * as S from "./styled";
+import {SelectAll} from "../../features/menuSlice"
+import { useSelector } from 'react-redux';
 
 
-function CartBox ({data,status,increment,isCartOpen}){
 
-    //=>Data prop is for displaying data
-    //=>Status is for state
-    // const [cartState, setCartState] = useState(false);
+
+function CartBox ({increment}){
+
+    const cartState = useSelector(SelectAll).cartState;
+    const cartList = useSelector(state => state.post.cartItemList);
     
     return(
-        <S.CartWrapper state={status} cartStatus = {isCartOpen}>
+        <S.CartWrapper cartState ={cartState}>
             <S.CartHeader>
                 <h1>Cart</h1>
             </S.CartHeader>
 
             <S.CartBody>
                 {
-                    (data === null) ? <S.CartEmpty><H1>Your cart is empty</H1></S.CartEmpty> 
-                    :<S.CartData>
-                        <CartItem data={data} increVal = {increment}/>
-                        <BuyBtn>Check out</BuyBtn>
-                    </S.CartData>   
+                    (cartList.length === 0) ? <S.CartEmpty><H1>Your cart is empty</H1></S.CartEmpty> 
+                    :<S.CartData><CartItem data={cartList} increVal = {increment}/><BuyBtn>Check out</BuyBtn></S.CartData>   
                 }
             </S.CartBody>
         </S.CartWrapper>
