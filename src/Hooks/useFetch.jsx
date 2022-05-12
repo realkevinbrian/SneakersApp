@@ -7,7 +7,7 @@ export default function useFetch() {
 
     useEffect(() => {
 
-        fetch("http://localhost:3004/post")
+        fetch("http://localhost:4000/post")
         .then(req => req.json())
         .then(resp => setData(resp))
         .catch(error=> console.log(error))

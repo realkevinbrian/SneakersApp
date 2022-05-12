@@ -70,8 +70,6 @@ function Index({cartStatus}) {
         }
     }
 
-
-
   return (
     <>
         <CartBox increment={value} status={cartState} isCartOpen={cartStatus} data={addCart}/>
@@ -104,7 +102,6 @@ function Index({cartStatus}) {
                              * if the increVal is greater than return increase else 1
                              */
                             let total = `${item.currency} ${((item.price * item.discount) / 100)}`;
-
                             
                             /**
                              * Body text
